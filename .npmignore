@@ -1,0 +1,6 @@
+atlassian-ide-plugin.xml
+.gitignore
+.jshintrc
+.travis.yml
+gulpfile.js
+test.js
