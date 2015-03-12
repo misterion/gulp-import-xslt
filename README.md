@@ -1,5 +1,6 @@
 gulp-import-xslt
 ===============
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][depstat-image]][depstat-url] [![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/gulp-import-xslt) [![Code Climate](https://codeclimate.com/github/misterion/gulp-import-xslt/badges/gpa.svg)](https://codeclimate.com/github/misterion/gulp-import-xslt) [![Test Coverage](https://codeclimate.com/github/misterion/gulp-import-xslt/badges/coverage.svg)](https://codeclimate.com/github/misterion/gulp-import-xslt) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/misterion/gulp-import-xslt/master/LICENSE)
 
 Import several xslt files into a single file, one by one, rebasing urls and inlining import/include nodes
 

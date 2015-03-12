@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "chai": "~1.8.1",
+    "codeclimate-test-reporter": "0.0.4",
     "event-stream": "~3.0.20",
     "gulp": "~3.8.11",
     "gulp-istanbul": "^0.6.0",
@@ -36,7 +37,9 @@
     "mocha": "~1.16.2"
   },
   "scripts": {
-    "test": "gulp"
+    "test": "npm run coverage && npm run codeclimate",
+    "coverage": "gulp lint",
+    "codeclimate": "cat coverage/lcov.info | codeclimate"
   },
   "keywords": [
     "gulpplugin",
