@@ -15,14 +15,14 @@ function replace(data, basePath, deep, importGraph) {
       rx;
 
   if (realDeep > 0) {
-    rx = /(<xsl:stylesheet.+?>)|(<\/xsl:stylesheet>)|(<\?xml.+?\?>)|(<!--[\s\S]*?-->)/img;
+    rx = /(<xsl:stylesheet[\s\S]+?>)|(<\/xsl:stylesheet>)|(<\?xml[\s\S]+?\?>)|(<!--[\s\S]*?-->)/img;
   } else {
     rx = /(<!--[\s\S]*?-->)/img;
   }
 
   strData = strData.replace(rx, '');
 
-  return strData.replace(/(<xsl:(include|import).+?href=")(.+?)(".+?\>)/img, function(match, g1, g2, g3, g4) {
+  return strData.replace(/(<xsl:(include|import).+?href=")(.+?)(".+?\>)/img, function(match, g1, g2, g3) {
     var filePath = path.resolve(basePath, g3);
     if (importGraph.hasOwnProperty(filePath)) {
       return '';
