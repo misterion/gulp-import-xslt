@@ -38,4 +38,50 @@ describe('gulp-import-xslt', function() {
         stream.write(fakeFile);
         stream.end();
     });
+
+    it('should pretty xsl', function(done) {
+        var stream = importXslt({prettyMethod: 'prettify'}),
+            prettyPath = './test/fixtures/sample_pretty.xsl',
+            path = './test/fixtures/sample.xsl';
+
+        var fakeFile = new gutil.File({
+            path: path,
+            contents: new Buffer(fs.readFileSync(path))
+        });
+
+        stream.on('data', function(newFile) {
+            var prettyData = new Buffer(fs.readFileSync(prettyPath));
+            assert.equal(String(prettyData), String(newFile.contents));
+        });
+
+        stream.on('end', function() {
+            done();
+        });
+
+        stream.write(fakeFile);
+        stream.end();
+    });
+
+    it('should minify xsl', function(done) {
+        var stream = importXslt({prettyMethod: 'minify'}),
+            prettyPath = './test/fixtures/sample_minify.xsl',
+            path = './test/fixtures/sample.xsl';
+
+        var fakeFile = new gutil.File({
+            path: path,
+            contents: new Buffer(fs.readFileSync(path))
+        });
+
+        stream.on('data', function(newFile) {
+            var prettyData = new Buffer(fs.readFileSync(prettyPath));
+            assert.equal(String(prettyData), String(newFile.contents));
+        });
+
+        stream.on('end', function() {
+            done();
+        });
+
+        stream.write(fakeFile);
+        stream.end();
+    });
 });

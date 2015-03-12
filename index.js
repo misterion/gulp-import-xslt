@@ -4,6 +4,7 @@
 var gutil = require('gulp-util'),
   path = require('path'),
   fs = require('fs'),
+  pd = require('pretty-data').pd,
   through = require('through2');
 
 var PLUGIN_NAME = 'gulp-import-xslt';
@@ -32,14 +33,22 @@ function replace(data, basePath, deep, importGraph) {
   });
 }
 
-module.exports = function() {
+module.exports = function(opts) {
+  var options = opts || {};
+  var methodSuffix = options.hasOwnProperty('prettyMethod') ? (options.prettyMethod === 'minify' ? 'min' : '') : false;
+
   return through.obj(function(file, enc, cb) {
+    var content;
     if (file.isStream()) {
       this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
       return cb();
     }
 
-    file.contents = new Buffer(replace(file.contents, path.dirname(file.path), 0, {}));
+    content = replace(file.contents, path.dirname(file.path), 0, {});
+    if (methodSuffix !== false) {
+      content = pd['xml' + methodSuffix](content);
+    }
+    file.contents = new Buffer(content);
     this.push(file);
     cb();
   });

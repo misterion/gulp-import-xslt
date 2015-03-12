@@ -15,6 +15,24 @@ Install with [npm](https://npmjs.org/package/gulp-import-xslt).
 npm install --save-dev gulp-import-xslt
 ```
 
+## Usage
+
+`Gulpfile.js`:
+```js
+var gulp = require('gulp');
+var importXslt = require('gulp-import-xslt');
+
+gulp.task('default', function () {
+  gulp.src('templates/*.xsl')
+    .pipe(importXslt())
+    .pipe(gulp.dest('dist/'));
+});
+```
+
+## Options
+
+- `prettyMethod` ('minify'/'prettify') to pretty-print or minify text in XSLT. It based on node-js [pretty-data](https://github.com/vkiryukhin/pretty-data) plugin.
+
 ## Examples
 
 In case this is `templates/sample.xsl`:
@@ -50,19 +68,6 @@ And result is:
     	My sample
     </xsl>
 </xsl:stylesheet>
-```
-
-This is the `Gulpfile.js`:
-
-```js
-var gulp = require('gulp');
-var importXslt = require('gulp-import-xslt');
-
-gulp.task('default', function () {
-  gulp.src('templates/*.xsl')
-    .pipe(importXslt())
-    .pipe(gulp.dest('dist/'));
-});
 ```
 
 Now, run the command `gulp` to get the combined xslt file.

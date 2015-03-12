@@ -4,6 +4,7 @@
     -->
 
     <xsl:include href="includes/header.xsl"/>
+    <xsl:include href="includes/header.xsl"/>
     <xsl:import href="includes/page.xsl"/>
 
     <xsl:template match="/">
