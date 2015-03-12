@@ -4,11 +4,10 @@
 'use strict';
 
 var assert = require('assert'),
-    es = require('event-stream'),
     fs = require('fs'),
     gutil = require('gulp-util'),
     PassThrough = require('stream').PassThrough,
-    importXslt = require('./index');
+    importXslt = require('./../index');
 
 function count(str, subStr) {
     return (String(str).match(new RegExp(String(subStr), 'g')) || []).length;
@@ -17,7 +16,7 @@ function count(str, subStr) {
 describe('gulp-import-xslt', function() {
     it('should work in buffer mode', function(done) {
         var stream = importXslt(),
-            path = './test/sample.xsl';
+            path = './test/fixtures/sample.xsl';
 
         var fakeFile = new gutil.File({
             path: path,

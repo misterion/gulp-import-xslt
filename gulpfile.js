@@ -1,22 +1,30 @@
 /* jshint node:true */
 'use strict';
 
-var gulp    = require('gulp'),
-    gutil   = require('gulp-util'),
-    clear   = require('clear'),
-    mocha   = require('gulp-mocha'),
-    jshint  = require('gulp-jshint'),
-    stylish = require('jshint-stylish');
+var gulp = require('gulp'),
+    jshint = require('gulp-jshint'),
+    istanbul = require('gulp-istanbul'),
+    mocha = require('gulp-mocha');
 
-gulp.task('lint', function () {
-    gulp.src('*.js')
+gulp.task('lint', function (cb) {
+    gulp.src(['*.js', 'test/*.js'])
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'))
-        .pipe(mocha());
+        .pipe(istanbul())
+        .pipe(istanbul.hookRequire())
+        .on('finish', function () {
+            gulp.src(['test/*.js'])
+                .pipe(mocha())
+                .pipe(istanbul.writeReports({
+                    dir: './coverage',
+                    reporters: ['lcov', 'text-summary']
+                }))
+                .on('end', cb);
+        });
 });
 
 gulp.task('watch', function() {
     gulp.watch('*.js', ['lint']);
 });
 
-gulp.task('default', ['lint', 'watch']);
+gulp.task('default', ['lint']);
