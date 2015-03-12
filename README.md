@@ -1,6 +1,9 @@
 gulp-import-xslt
 ===============
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][depstat-image]][depstat-url] [![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/gulp-import-xslt) [![Code Climate](https://codeclimate.com/github/misterion/gulp-import-xslt/badges/gpa.svg)](https://codeclimate.com/github/misterion/gulp-import-xslt) [![Test Coverage](https://codeclimate.com/github/misterion/gulp-import-xslt/badges/coverage.svg)](https://codeclimate.com/github/misterion/gulp-import-xslt) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/misterion/gulp-import-xslt/master/LICENSE)
+[![NPM version][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
+[![Code Climate][code-climate-image]][code-climate-url]
+[![Test Coverage][coverage-image]][coverage-url]
 
 Import several xslt files into a single file, one by one, rebasing urls and inlining import/include nodes
 
@@ -68,3 +71,11 @@ Now, run the command `gulp` to get the combined xslt file.
 
 Released under the [MIT](LICENSE) license.
 
+[npm-image]: https://img.shields.io/npm/v/gulp-import-xslt.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/gulp-import-xslt
+[travis-image]: https://img.shields.io/travis/misterion/gulp-import-xslt.svg?style=flat-square
+[travis-url]: https://travis-ci.org/misterion/gulp-import-xslt
+[code-climate-image]: https://codeclimate.com/github/misterion/gulp-import-xslt/badges/gpa.svg
+[code-climate-url]: https://codeclimate.com/github/misterion/gulp-import-xslt
+[coverage-image]: https://codeclimate.com/github/misterion/gulp-import-xslt/badges/coverage.svg
+[coverage-url]: https://codeclimate.com/github/misterion/gulp-import-xslt
